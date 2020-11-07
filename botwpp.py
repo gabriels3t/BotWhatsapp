@@ -1,5 +1,6 @@
 from selenium import webdriver
 from time import sleep
+from selenium.webdriver.common.keys import Keys
 
 class Wpp:
     def __init__(self):
@@ -53,11 +54,9 @@ class Wpp:
                 chat.click()
                 sleep(0.5)
                 chat.send_keys(msg)
-                sleep(0.5)
-                botaoEnvia = self.drive.find_element_by_xpath('//span[@data-icon="send"]')
-                sleep(3)
-                botaoEnvia.click()
-                sleep(5)
+                sleep(0.8)
+                chat.send_keys(Keys.ENTER)
+                sleep(2)
            
 
 bot = Wpp()
