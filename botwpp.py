@@ -21,8 +21,8 @@ class Wpp:
         
         self.grupo = []
         while True:
-            self.grupo.append(str(input('Adicionar Grupos ')))
-            sair = str(input('Adicionar mais Mensagens ? [S/N]')).upper()
+            self.grupo.append(str(input('Adicionar Grupos ou pessoas ')))
+            sair = str(input('Adicionar mais Grupos ou pessoas ? [S/N]')).upper()
            
             if sair != 'S' and sair != 'N':
                 while True:
@@ -45,18 +45,26 @@ class Wpp:
         print('Esperando O Login...')
         temp = str(input('Aberte qualquer tecla para continuar'))
         for grupo in self.grupo:
-            grupo = self.drive.find_element_by_xpath(f"//span[@title='{grupo}']")
-            sleep(3)
+            novoGrupo = grupo
+            grupo = self.drive.find_element_by_class_name('_3FRCZ')
+           # grupo = self.drive.find_element_by_xpath(f"//span[@title='{grupo}']")
+            sleep(1)
             grupo.click()
+            sleep(1)
+            grupo.send_keys(f'{novoGrupo}')
+            print(f'{novoGrupo}')
+            sleep(3)
+            grupo.send_keys(Keys.ENTER)
+            sleep(2)
+            chat = self.drive.find_element_by_class_name('_3uMse')
+            sleep(2)
+            chat.click()
             for msg in self.mensagem:
-                chat = self.drive.find_element_by_class_name('_3uMse')
                 sleep(3)
-                chat.click()
-                sleep(0.5)
                 chat.send_keys(msg)
-                sleep(0.8)
+                sleep(1)
                 chat.send_keys(Keys.ENTER)
-                sleep(2)
+            
            
 
 bot = Wpp()
