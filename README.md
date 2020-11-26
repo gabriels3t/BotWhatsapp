@@ -1,4 +1,5 @@
 # BotWhatsapp
+## Primeiros passos
 Primeira versão do bot de mensagem em python utilizando a bliblioteca selenium Para linux
 Primeiramente ter instado o chromium no computador
 comando para instalação do chromium
